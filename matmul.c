@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include "common.h"
 
+//testing123
+
 typedef struct _shd_mem {
 	int* A;
 	int* B;
