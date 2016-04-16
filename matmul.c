@@ -7,8 +7,6 @@
 #include <unistd.h>
 #include "common.h"
 
-//testing123
-
 typedef struct _shd_mem {
 	int* A;
 	int* B;
@@ -64,7 +62,7 @@ int main(int argc, char** argv) {
 
 
 		for(i = 0; i < thread_num; i++) {
-			if (i % thread_num == 0) {			
+			if (pid != shd_matrix->children[i]) {			
 				pid = fork();
 				shd_matrix->children[i] = getpid();
 			}
@@ -96,10 +94,10 @@ int main(int argc, char** argv) {
 			}
 			
 			printf("Child process (%d)...\n", order);
-			start = 0;
-			end = matrix_size;
+			start = (matrix_size/thread_num)*order;
+			end = start + (matrix_size/thread_num - 1);
 			
-			for (i=0;i<matrix_size;i++) {
+			for (i=start;i<=end;i++) {
 				for (j=0;j<matrix_size;j++) {
 					sum=0;
 					for (e=0;e<matrix_size;e++) {

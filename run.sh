@@ -13,7 +13,7 @@ do
 		echo "Execute matrixmul $m $t"
 		tmp=$(./matrixmul $m $t | grep -o Child | wc -l)
 		# Fill here
-		total_child=$((total_child+t))
+		total_child=$((total_child+tmp))
 	done
 done
 
