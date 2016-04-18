@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
 
 
 		for(i = 0; i < thread_num; i++) {
-			if (pid != shd_matrix->children[i]) {			
+			if (pid > 0) {			
 				pid = fork();
 				shd_matrix->children[i] = getpid();
 			}
